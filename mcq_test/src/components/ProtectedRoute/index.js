@@ -4,9 +4,10 @@ import {Navigate, Route} from 'react-router-dom'
 const ProtectedRoute = props =>{
     const jwtToken = Cookies.get("jwtToken")
     if(jwtToken !== undefined){
-        <Navigate to="/test" />
+        return <Navigate to="/test" />
     }else{
-        <Route {...props} />
+        console.log(props)
+        return <Route {...props} />
     }
 }
 

@@ -1,19 +1,22 @@
 import { useState } from 'react'
+import axios from 'axios'
 
 import {BGContainer, ButtonContainer, Form, FormContainer, FormHeading, InputContainer, InputField, Label, LoginButton, SignupButton} from './styledComponents'
 
 const Login = () =>{
     const [username, setName] = useState("")
     const [password, setPassword] = useState("")
-    const [userDetails, setUserDetails] = useState({})
 
     const onChangeUsername = e => setName(e.target.value)
 
     const onChangePassword = e => setPassword(e.target.value)
 
-    const onSubmitForm = e => {
+    const onSubmitForm = async (e) => {
         e.preventDefault()
-        setUserDetails({username, password})
+        const serverAddress = 'http://localhost:4000/login'
+        const userDetails = {username, password}
+        const response = await axios(serverAddress, userDetails)
+        console.log(response)
     }
 
     return (

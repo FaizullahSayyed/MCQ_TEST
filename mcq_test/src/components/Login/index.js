@@ -2,7 +2,7 @@ import { useState } from 'react'
 import axios from 'axios'
 import Popup from 'reactjs-popup'
 
-import {BGContainer, ButtonContainer, Form, FormContainer, FormHeading, InputContainer, InputField, Label, LoginButton, SignupButton} from './styledComponents'
+import {BGContainer, ButtonContainer, Form, FormContainer, FormHeading, InputContainer, InputField, Label, LoginButton, SignupButton, SignUpContainer} from './styledComponents'
 
 const Login = () =>{
     const [username, setName] = useState("")
@@ -40,8 +40,16 @@ const Login = () =>{
                 } 
                 className="popup-content">
                     {close => (
-                        <><span>Pop up content</span>
-                        <button type="button" onClick={()=>close()}>close</button></>
+                        <SignUpContainer>
+                            <InputContainer>
+                                <Label htmlFor='fullname'></Label>
+                                <InputContainer placeholder='Full Name' id='fullname'/>
+                            </InputContainer>
+                            <InputContainer>
+                                <Label htmlFor='class'></Label>
+                                <InputContainer placeholder='Class' id='fullname'/>
+                            </InputContainer>
+                        </SignUpContainer>
                     )}
 
                 </Popup>

@@ -79,3 +79,9 @@ export const SignupButton = styled.button`
     width: 80px;
     cursor: pointer;
 `
+
+export const SignUpContainer = styled.div``
+
+export const StyledSelect = styled.select``
+
+export const StyledOption = styled.option``

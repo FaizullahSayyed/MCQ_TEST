@@ -14,9 +14,9 @@ const Login = () =>{
     const onSubmitForm = async (e) => {
         e.preventDefault()
         const serverAddress = 'http://localhost:4000/login'
-        const userDetails = {username, password}
-        const response = await axios(serverAddress, userDetails)
-        console.log(response)
+        
+        const response = await axios.post(serverAddress, {username, password})
+        // console.log(response)
     }
 
     return (

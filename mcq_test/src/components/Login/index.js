@@ -7,6 +7,14 @@ import {BGContainer, ButtonContainer, Form, FormContainer, FormHeading, InputCon
 const Login = () =>{
     const [username, setName] = useState("")
     const [password, setPassword] = useState("")
+    const [fullName, setFullName] = useState("")
+    const [selectedOptions, selectOption] = useState("")
+    const [signupUsername, setSignupUsername] = useState("")
+    const [signupPassword, setSignupPassword] = useState("")
+    const [email, setEmail] = useState("")
+    const [phoneNo, serPhoneNo] = useState("")
+
+    const options = [{value: 'class_1', label: 'Class 1'},{value: 'class_2', label: 'Class 2'},{value: 'class_2', label: 'Class 3'}]
 
     const onChangeUsername = e => setName(e.target.value)
 
@@ -43,21 +51,15 @@ const Login = () =>{
                         <SignUpContainer>
                             <Form>
                                 <InputContainer>
-                                    <Label htmlFor='fullname'></Label>
-                                    <InputContainer placeholder='Full Name' id='fullname'/>
+                                    <Label htmlFor='fullName'>Full Name</Label>
+                                    <InputContainer placeholder='Full Name' id='fullName' value={fullName}/>
                                 </InputContainer>
                                 <InputContainer>
-                                    <Label htmlFor='class'></Label>
-                                   <StyledSelect>
-                                        <StyledOption value="Class 1">
-                                            Class 1
-                                        </StyledOption>
-                                        <StyledOption value="Class 2">
-                                            Class 2
-                                        </StyledOption>
-                                        <StyledOption value="Class 3">
-                                            Class 3
-                                        </StyledOption>
+                                    <Label htmlFor='classOptions'></Label>
+                                   <StyledSelect id="classOptions" value={selec}>
+                                        {
+
+                                        }
                                    </StyledSelect>
                                 </InputContainer>
                             </Form>

@@ -4,29 +4,15 @@ import Popup from 'reactjs-popup'
 
 import SignupForm from '../SignupForm'
 
-import {BGContainer, ButtonContainer, Form, FormContainer, FormHeading, InputContainer, InputField, Label, LoginButton, SignupButton, SignUpContainer, StyledOption, StyledSelect} from './styledComponents'
+import {BGContainer, ButtonContainer, Form, FormContainer, FormHeading, InputContainer, InputField, Label, LoginButton, SignupButton} from './styledComponents'
 
 const Login = () =>{
     const [username, setName] = useState("")
     const [password, setPassword] = useState("")
-    const [fullName, setFullName] = useState("")
-    const [selectedOption, selectOption] = useState("")
-    const [signupUsername, setSignupUsername] = useState("")
-    const [signupPassword, setSignupPassword] = useState("")
-    const [email, setEmail] = useState("")
-    const [phoneNo, serPhoneNo] = useState("")
-
-    const options = [{value: 'class_1', label: 'Class 1'},{value: 'class_2', label: 'Class 2'},{value: 'class_2', label: 'Class 3'}]
 
     const onChangeUsername = e => setName(e.target.value)
 
     const onChangePassword = e => setPassword(e.target.value)
-
-    const onChangeOption = e => selectOption(e.target.value)
-
-    const onChangePhone = e => setPhoneNo(e.targer.value)
-
-    const onChangeSignupUsername = e => 
 
     const onSubmitForm = async (e) => {
         e.preventDefault()

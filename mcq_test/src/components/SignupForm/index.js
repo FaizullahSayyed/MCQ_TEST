@@ -1,5 +1,7 @@
 import {useState} from 'react'
 
+import {Form, InputContainer, Label, SignUpContainer, StyledOption, StyledSelect} from './styledComponents'
+
 const SignupForm = () => {
     const [fullName, setFullName] = useState("")
     const [selectedOption, selectOption] = useState("")
@@ -7,6 +9,12 @@ const SignupForm = () => {
     const [password, setPassword] = useState("")
     const [email, setEmail] = useState("")
     const [phoneNo, setPhoneNo] = useState("")
+
+    const options = [
+        {value: 'class_1', label: 'Class 1'},
+        {value: 'class_2', label: 'Class 2'},
+        {value: 'class_2', label: 'Class 3'}
+    ]
 
     const onChangeFullName = e => setFullName(e.target.vlue)
 

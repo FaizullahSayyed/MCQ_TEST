@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import axios from 'axios'
+import Popup from 'reactjs-popup'
 
 import {BGContainer, ButtonContainer, Form, FormContainer, FormHeading, InputContainer, InputField, Label, LoginButton, SignupButton} from './styledComponents'
 
@@ -34,7 +35,17 @@ const Login = () =>{
             </InputContainer>
             <ButtonContainer>
                 <LoginButton type="submit">Login</LoginButton>
-                <SignupButton>Signup</SignupButton>
+                <Popup model trigger={
+                    <SignupButton type="button">Signup</SignupButton>
+                } 
+                className="popup-content">
+                    {close => (
+                        <><span>Pop up content</span>
+                        <button type="button" onClick={()=>close()}>close</button></>
+                    )}
+
+                </Popup>
+                {/* <SignupButton>Signup</SignupButton> */}
             </ButtonContainer>
             </Form>
         </FormContainer>

@@ -5,7 +5,7 @@ const sqlite3 = require('sqlite3')
 
 const app = express()
 const port = 4000
-const db = sqlite3.Database;
+const db = sqlite3.Database('../mcq_test.db');
 
 app.use(express.json())
 app.use(cors())
@@ -15,7 +15,7 @@ app.post('/login', (req, res) => {
   const {username, password} = req.body
   // userDetails = db.get('select username, password from admins where username = ?',[])
   console.log(`response from server ${username}`)
-  res.send('data recived')
+  res.send({data: 'data.....'})
 })
 
 app.listen(port,()=>{

@@ -6,13 +6,19 @@ const SignupForm = () => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [email, setEmail] = useState("")
-    const [phoneNo, serPhoneNo] = useState("")
+    const [phoneNo, setPhoneNo] = useState("")
+
+    const onChangeFullName = e => setFullName(e.target.vlue)
 
     const onChangeOption = e => selectOption(e.target.value)
 
-    const onChangePhone = e => setPhoneNo(e.targer.value)
+    const onChangeUsername = e => setUsername(e.target.value)
 
-    const onChangeSignupUsername = e => 
+    const onChangePassword = e => setPassword(e.target.value)
+
+    const onChangeEmail = e => setEmail(e.target.value)
+
+    const onChangePhone = e => setPhoneNo(e.target.value)
 
     return (
         <SignUpContainer>

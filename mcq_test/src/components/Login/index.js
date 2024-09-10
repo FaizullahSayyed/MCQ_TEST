@@ -2,7 +2,7 @@ import { useState } from 'react'
 import axios from 'axios'
 import Popup from 'reactjs-popup'
 
-import {BGContainer, ButtonContainer, Form, FormContainer, FormHeading, InputContainer, InputField, Label, LoginButton, SignupButton, SignUpContainer} from './styledComponents'
+import {BGContainer, ButtonContainer, Form, FormContainer, FormHeading, InputContainer, InputField, Label, LoginButton, SignupButton, SignUpContainer, StyledOption, StyledSelect} from './styledComponents'
 
 const Login = () =>{
     const [username, setName] = useState("")
@@ -41,14 +41,26 @@ const Login = () =>{
                 className="popup-content">
                     {close => (
                         <SignUpContainer>
-                            <InputContainer>
-                                <Label htmlFor='fullname'></Label>
-                                <InputContainer placeholder='Full Name' id='fullname'/>
-                            </InputContainer>
-                            <InputContainer>
-                                <Label htmlFor='class'></Label>
-                                <InputContainer placeholder='Class' id='fullname'/>
-                            </InputContainer>
+                            <Form>
+                                <InputContainer>
+                                    <Label htmlFor='fullname'></Label>
+                                    <InputContainer placeholder='Full Name' id='fullname'/>
+                                </InputContainer>
+                                <InputContainer>
+                                    <Label htmlFor='class'></Label>
+                                   <StyledSelect>
+                                        <StyledOption value="Class 1">
+                                            Class 1
+                                        </StyledOption>
+                                        <StyledOption value="Class 2">
+                                            Class 2
+                                        </StyledOption>
+                                        <StyledOption value="Class 3">
+                                            Class 3
+                                        </StyledOption>
+                                   </StyledSelect>
+                                </InputContainer>
+                            </Form>
                         </SignUpContainer>
                     )}
 

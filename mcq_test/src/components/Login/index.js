@@ -2,13 +2,15 @@ import { useState } from 'react'
 import axios from 'axios'
 import Popup from 'reactjs-popup'
 
+import SignupForm from '../SignupForm'
+
 import {BGContainer, ButtonContainer, Form, FormContainer, FormHeading, InputContainer, InputField, Label, LoginButton, SignupButton, SignUpContainer, StyledOption, StyledSelect} from './styledComponents'
 
 const Login = () =>{
     const [username, setName] = useState("")
     const [password, setPassword] = useState("")
     const [fullName, setFullName] = useState("")
-    const [selectedOptions, selectOption] = useState("")
+    const [selectedOption, selectOption] = useState("")
     const [signupUsername, setSignupUsername] = useState("")
     const [signupPassword, setSignupPassword] = useState("")
     const [email, setEmail] = useState("")
@@ -19,6 +21,12 @@ const Login = () =>{
     const onChangeUsername = e => setName(e.target.value)
 
     const onChangePassword = e => setPassword(e.target.value)
+
+    const onChangeOption = e => selectOption(e.target.value)
+
+    const onChangePhone = e => setPhoneNo(e.targer.value)
+
+    const onChangeSignupUsername = e => 
 
     const onSubmitForm = async (e) => {
         e.preventDefault()
@@ -48,22 +56,7 @@ const Login = () =>{
                 } 
                 className="popup-content">
                     {close => (
-                        <SignUpContainer>
-                            <Form>
-                                <InputContainer>
-                                    <Label htmlFor='fullName'>Full Name</Label>
-                                    <InputContainer placeholder='Full Name' id='fullName' value={fullName}/>
-                                </InputContainer>
-                                <InputContainer>
-                                    <Label htmlFor='classOptions'></Label>
-                                   <StyledSelect id="classOptions" value={selec}>
-                                        {
-
-                                        }
-                                   </StyledSelect>
-                                </InputContainer>
-                            </Form>
-                        </SignUpContainer>
+                        <SignupForm />
                     )}
 
                 </Popup>

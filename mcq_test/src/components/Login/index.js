@@ -39,7 +39,22 @@ const Login = () =>{
                 <LoginButton type="submit">Login</LoginButton>
                 <Popup model trigger={
                     <SignupButton type="button">Signup</SignupButton>
-                } 
+                }
+                contentStyle={{
+                    position: 'absolute',
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -70%)',
+                    width: '400px', // Adjust width as needed
+                    backgroundColor: '#fff', // Adjust background color
+                    padding: '20px',
+                    borderRadius: '5px',
+                    boxShadow: '0px 2px 10px rgba(0, 0, 0, 0.2)', // Optional shadow
+                    outline: 'none',
+                  }}
+                  overlayStyle={{
+                    backgroundColor: 'rgba(0, 0, 0, 0.6)', // Set background color and opacity for blur
+                  }} 
                 className="popup-content">
                     {close => (
                         <SignupForm />

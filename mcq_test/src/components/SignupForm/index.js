@@ -1,6 +1,8 @@
 import {useState} from 'react'
+import Axios from 'axios'
 
-import {Form, InputContainer, Label, SignUpContainer, StyledOption, StyledSelect} from './styledComponents'
+import {ButtonContainer, Form, InputContainer, InputField, Label, SignupButton, SignUpContainer, StyledOption, StyledSelect} from './styledComponents'
+import axios from 'axios'
 
 const SignupForm = () => {
     const [fullName, setFullName] = useState("")
@@ -13,7 +15,7 @@ const SignupForm = () => {
     const options = [
         {value: 'class_1', label: 'Class 1'},
         {value: 'class_2', label: 'Class 2'},
-        {value: 'class_2', label: 'Class 3'}
+        {value: 'class_3', label: 'Class 3'}
     ]
 
     const onChangeFullName = e => setFullName(e.target.vlue)
@@ -28,12 +30,25 @@ const SignupForm = () => {
 
     const onChangePhone = e => setPhoneNo(e.target.value)
 
+    const onSubmitForm = async(e) =>{
+        e.preventDefault()
+        const server = 'http://localhost:4000/signup'
+
+        const userDetails = {fullName, selectedOption, username, password, email, phoneNo}
+
+        const response = await axios.post(server, userDetails)
+
+        if(response.ok === true){
+            console.log('User Created Successfully.')
+        }
+    }
+
     return (
         <SignUpContainer>
-            <Form>
+            <Form onSubmit={onSubmitForm}>
                 <InputContainer>
                     <Label htmlFor='fullName'>Full Name</Label>
-                    <InputContainer placeholder='Full Name' id='fullName' value={fullName}/>
+                    <InputField placeholder='Full Name' id='fullName' value={fullName} onChange={onChangeFullName}/>
                 </InputContainer>
                 <InputContainer>
                     <Label htmlFor='classOptions'></Label>
@@ -46,6 +61,25 @@ const SignupForm = () => {
                         }
                     </StyledSelect>
                 </InputContainer>
+                <InputContainer>
+                    <Label htmlFor='username'>Username</Label>
+                    <InputField type="text" placeholder='User Name' id='username' value={username} onChange={onChangeUsername}/>
+                </InputContainer>
+                <InputContainer>
+                    <Label htmlFor='password'>Password</Label>
+                    <InputField type="password" placeholder='Password' id='password' value={password} onChange={onChangePassword}/>
+                </InputContainer>
+                <InputContainer>
+                    <Label htmlFor='email'>Email</Label>
+                    <InputField placeholder='E-mail' id='email' value={email} onChange={onChangeEmail}/>
+                </InputContainer>
+                <InputContainer>
+                    <Label htmlFor='phoneNo'>Phone No.</Label>
+                    <InputField placeholder='Phone Number' id='phoneNo' value={phoneNo} onChange={onChangePhone}/>
+                </InputContainer>
+                <ButtonContainer>
+                    <SignupButton type="submit">Signup</SignupButton>
+                </ButtonContainer>
             </Form>
         </SignUpContainer>
     )

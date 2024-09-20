@@ -1,6 +1,6 @@
 const sqlite3 = require('sqlite3').verbose()
 
-const db = new sqlite3.Database('../mcq_test.db')
+const db = new sqlite3.Database('./mcq_test.db')
 
 // db.run(`CREATE TABLE users (
 //     sr_no INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -28,3 +28,4 @@ const db = new sqlite3.Database('../mcq_test.db')
 // db.run('alter table admins modiy id ')
 // db.run(`delete from admins where username = 'FaizullaSyed'`)
 // db.run(`alter table users add column phone_no int(10) default unknown`)
+db.close()

@@ -1,11 +1,13 @@
 const express = require('express')
 const cors = require('cors')
 const sqlite3 = require('sqlite3')
+const path = require('path')
+
 
 
 const app = express()
 const port = 4000
-const db = sqlite3.Database('../mcq_test.db');
+const db = sqlite3.Database('mcq_test.db');
 
 app.use(express.json())
 app.use(cors())
@@ -16,6 +18,12 @@ app.post('/login', (req, res) => {
   // userDetails = db.get('select username, password from admins where username = ?',[])
   console.log(`response from server ${username}`)
   res.send({data: 'data.....'})
+})
+
+app.post('/signup',(req, res) => {
+  const  {fullName, selectedOption, username, password, email, phoneNo} = req.body
+  db.run(`INSERT INTO USERS VALUES (?, ?, ?, ?, ?, ?)`,[fullName, selectedOption, username, password, email, phoneNo])
+  res.send('signedup successfull')
 })
 
 app.listen(port,()=>{

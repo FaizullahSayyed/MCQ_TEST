@@ -1,8 +1,8 @@
 const sqlite3 = require('sqlite3').verbose()
 const path = require('path')
 
-const dbPath = path.join(__dirname, 'data', 'mcq_test.db');
-const db = new sqlite3.Database('./database/mcq_test.db');
+const dbPath = path.join(__dirname, 'database', 'mcq_test.db');
+const db = new sqlite3.Database(dbPath);
 
 // db.run(`CREATE TABLE users (
 //     sr_no INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -16,8 +16,7 @@ const db = new sqlite3.Database('./database/mcq_test.db');
 //     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
 //     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
 // )`)
-// db.run(`INSERT INTO admins (username, email, password, role, created_at, updated_at)
-// VALUES ('AnotherUser', 'AnotherUser@gmail.com','AnotherPassword',  'admin', current_timestamp, current_timestamp);`)
+// db.run(`INSERT INTO users (id, name, class, username, password, email, phone_no, created_at, updated_at, role) VALUES ('1','user1', 'class1','username1',  'password1', 'usrname1@gmail.com', 1234567890, current_timestamp,current_timestamp, 'student');`)
 // db.run(`insert into admins (id, name) values (1, 'faiz')`)
 // db.all(`select * from users`, (error, rows)=>{
 //     if(error){

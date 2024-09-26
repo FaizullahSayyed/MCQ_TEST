@@ -18,6 +18,7 @@
     "reactjs-popup": "^2.0.6",
     "sqlite3": "^5.1.7",
     "styled-components": "^6.1.13",
+    "uuid": "^10.0.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

@@ -1,47 +1,57 @@
-import { useState } from 'react'
-import axios from 'axios'
-import { Link } from 'react-router-dom'
+import { useState } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
-import {BGContainer, ButtonContainer, Form, FormContainer, FormHeading, InputContainer, InputField, Label, LoginButton, SignupButton} from './styledComponents'
+import { BGContainer, ButtonContainer, Form, FormContainer, FormHeading, InputContainer, InputField, Label, LoginButton, Message, SignupButton } from './styledComponents';
 
+const Login = () => {
+  const [username, setName] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState(null); // State for error message
 
-const Login = () =>{
-    const [username, setName] = useState("")
-    const [password, setPassword] = useState("")
+  const onChangeUsername = (e) => setName(e.target.value);
 
-    const onChangeUsername = e => setName(e.target.value)
+  const onChangePassword = (e) => setPassword(e.target.value);
 
-    const onChangePassword = e => setPassword(e.target.value)
+  const onSubmitForm = async (e) => {
+    e.preventDefault();
+    const serverAddress = 'http://localhost:4000/login';
 
-    const onSubmitForm = async (e) => {
-        e.preventDefault()
-        const serverAddress = 'http://localhost:4000/login'
-        
-        const response = await axios.post(serverAddress, {username, password})
-        console.log(response)
+    const userCredentials = {username, password}
+
+    try {
+      const response = await axios.post(serverAddress, userCredentials);
+      console.log(response.data); // Assuming successful response has data
+        setError(response.data)
+      // Handle successful login logic here (e.g., redirect to dashboard)
+    } catch (error) {
+      console.error('Error during login:', error);
+      
     }
+  };
 
-    return (
+  return (
     <BGContainer>
-        <FormContainer>
-            <Form onSubmit={onSubmitForm}>
-            <InputContainer>
-                <FormHeading>Login</FormHeading>
-                <Label htmlFor='username'>USERNAME</Label>
-                <InputField type="text" id="username" value={username} onChange={onChangeUsername}/>
-            </InputContainer>
-            <InputContainer>
-                <Label htmlFor='password'>PASSWORD</Label>
-                <InputField type="password" id="password" value={password} onChange={onChangePassword}/>
-            </InputContainer>
-            <ButtonContainer>
-                <LoginButton type="submit">Login</LoginButton>
-                <Link to="/signup"><SignupButton type="button">Signup</SignupButton></Link>
-            </ButtonContainer>
-            </Form>
-        </FormContainer>
+      <FormContainer>
+        <Form onSubmit={onSubmitForm}>
+          {error !== null && <Message className="error-message">{error}</Message>} {/* Display error message if present */}
+          <InputContainer>
+            <FormHeading>Login</FormHeading>
+            <Label htmlFor='username'>USERNAME</Label>
+            <InputField type="text" id="username" value={username} onChange={onChangeUsername} />
+          </InputContainer>
+          <InputContainer>
+            <Label htmlFor='password'>PASSWORD</Label>
+            <InputField type="password" id="password" value={password} onChange={onChangePassword} />
+          </InputContainer>
+          <ButtonContainer>
+            <LoginButton type="submit">Login</LoginButton>
+            <Link to="/signup"><SignupButton type="button">Signup</SignupButton></Link>
+          </ButtonContainer>
+        </Form>
+      </FormContainer>
     </BGContainer>
-    )
-}
+  );
+};
 
-export default Login
+export default Login;

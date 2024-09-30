@@ -80,6 +80,16 @@ export const SignupButton = styled.button`
     cursor: pointer;
 `
 
+export const MessageContainer = styled.div`
+    color: ${(props) => props.color};
+`
+
+export const Message = styled.p`
+    text-align: center;
+    font-weight: 800;
+    font-size: 25px;
+`
+
 export const SignUpContainer = styled.div``
 
 export const StyledSelect = styled.select``

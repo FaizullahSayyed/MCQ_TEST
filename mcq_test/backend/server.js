@@ -106,7 +106,9 @@ app.post('/login', async (req, res) => {
     }
 
     // Successful login, handle session or token generation here
-    res.send('Login successful');
+    // res.send('Login successful');
+    const token = json.sign({userId: user.id},'test',{expiresIn: '30d'})
+    res.json({token})
   } catch (error) {
     res.status(500).send('Internal server error');
   }

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { BGContainer, ButtonContainer, Form, FormContainer, FormHeading, InputContainer, InputField, Label, LoginButton, Message, SignupButton } from './styledComponents';
 
@@ -9,9 +9,17 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null); // State for error message
 
-  const onChangeUsername = (e) => setName(e.target.value);
+  const onChangeUsername = (e) => {
+    setError(null)
+    setName(e.target.value);
+}
 
-  const onChangePassword = (e) => setPassword(e.target.value);
+  const onChangePassword = (e) => {
+    setError(null)
+    setPassword(e.target.value);
+  }
+
+  const navigate = useNavigate()
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
@@ -21,12 +29,18 @@ const Login = () => {
 
     try {
       const response = await axios.post(serverAddress, userCredentials);
-      console.log(response.data); // Assuming successful response has data
-        setError(response.data)
-      // Handle successful login logic here (e.g., redirect to dashboard)
+        if(response.data.token){
+                navigate("/")
+        }else{
+            setError(response.data)
+        }
+    //   console.log(response.data); // Assuming successful response has data
+    //     // setError(response.data)
+    //     console.log(response.data)
+    //   // Handle successful login logic here (e.g., redirect to dashboard)
     } catch (error) {
-      console.error('Error during login:', error);
-      
+    //   setError(error.data)
+      setError(error.response.data)
     }
   };
 

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie'
 
 import { BGContainer, ButtonContainer, Form, FormContainer, FormHeading, InputContainer, InputField, Label, LoginButton, Message, SignupButton } from './styledComponents';
 
@@ -30,7 +31,8 @@ const Login = () => {
     try {
       const response = await axios.post(serverAddress, userCredentials);
         if(response.data.token){
-                navigate("/")
+            Cookies.set("jwtToken",response.data.token, {expires: 30})
+            navigate("/")
         }else{
             setError(response.data)
         }

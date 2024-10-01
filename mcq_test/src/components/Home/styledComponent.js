@@ -57,3 +57,21 @@ export const LeaderboardButton = styled.button`
   border-radius: 5px;
   cursor: pointer;
 `;
+
+export const SearchBoxContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px; /* Adjust spacing as needed */
+`;
+
+export const SearchInput = styled.input`
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 300px; /* Adjust the width as needed */
+
+  &:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+`;
